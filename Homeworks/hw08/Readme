@@ -1,0 +1,137 @@
+HOMEWORK 8: QUAD TREES AND TREE ITERATION
+            
+            See: hw_description
+
+NAME:  ALSENY SYLLA
+
+
+Websites:
+- www.stackoverflow.com
+- www.cplusplus.com
+
+Remember: Your implementation for this assignment must be done on your
+own, as described in "Academic Integrity for Homework" handout.
+
+
+
+ESTIMATE OF # OF HOURS SPENT ON THIS ASSIGNMENT:  16 hours
+
+
+
+ORDER NOTATION ANALYSIS: 
+Give the big O notation of each of the QuadTree operations and justify
+your answer for the non trivial operations (please be concise!)
+Analyze both the running time and the additional memory usage needed
+(beyond the space allocated for the existing tree structure).  You may
+assume that the tree is reasonably well balanced for all operations.
+
+
+n = the number of elements in the tree
+
+
+size()
+  running time: O(1)
+  memory usage: O(1)
+
+In order to insert a node into the tree structure, the program
+runs in log n time, as the tree is ordered and, right from the 
+beginning, it can choose one child to go to out of the four, and
+can do this for all nodes, translating to log base 4 of the total nodes. 
+The memory usage would be the same, as the recusive calls go through
+the path of log n nodes.
+
+insert()
+  running time: O(log n)
+  memory usage: O(log n)
+
+Find is also a log n operation, since the tree is ordered, so it
+knows instantly depending on what the point's coordinates are where to go.
+Therefore, both running time and memory usage are log n.
+
+find()
+  running time: O(log n)
+  memory usage: O(log n)
+
+height()
+  running time: O(n)
+  memory usage: O(log n)
+
+begin()
+  running time: O(1)
+  memory usage: O(1)
+
+end()
+  running time: O(1)
+  memory usage: O(1)
+
+bf_begin()
+  running time: O(1)
+  memory usage: O(1)
+
+bf_end()
+  running time: O(1)
+  memory usage: O(1)
+
+operator++()
+  
+  Most of the operator++ operations for depth first iterators
+  are simple operations, requiring O(1) time. Only a couple of operations
+  are log(n) time, where the pointer needs to trail back up to the
+  root and go down another branch. Thus, the amortized running time and
+  memory usage is O(1).
+  Depth First:
+    running time: O(1)
+    memory usage: O(1)
+
+  Breadth first operator++ in my program is done using a vector, and 
+  finding the current pointer, and then setting the pointer to the next
+  value in the vector, thus, the best case is O(1), worst case is O(n), and 
+  average case would then be O(n/2) which is equivalent to O(n).
+  Breadth First:
+    running time: O(n)
+    memory usage: O(n)
+
+operator*()
+  running time: O(1)
+  memory usage: O(1)
+
+getLabel()
+  running time: O(1)
+  memory usage: O(1)
+
+getDepth()
+  running time: O(log n)
+  memory usage: O(1)
+
+All three of the following, the copy constructor, assignment operator,
+and destrcutor, all are O(n), because each must go through every single
+node in the tree to either copy them, duplicate them, or delete them. The
+memory stored is also O(n), because every node is stored in the recursive
+calls.
+copy constructor
+  running time: O(n)
+  memory usage: O(n)
+
+assignment operator
+  running time: O(n)
+  memory usage: O(n)
+
+destructor
+  running time: O(n)
+  memory usage: O(n)
+
+
+
+EXTRA CREDIT:  TREE BALANCING
+How does the point insertion order affect the shape of the resulting
+QuadTree object? What are specific examples of the worst case and best
+case?  Discuss your stratgy for reordering the input to rebalance the
+tree.  Paste example output with and without your rebalancing.
+
+
+
+
+
+
+MISC. COMMENTS TO GRADER:  
+(optional, please be concise!)
