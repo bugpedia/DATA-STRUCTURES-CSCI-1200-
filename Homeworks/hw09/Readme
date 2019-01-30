@@ -1,0 +1,129 @@
+HOMEWORK 9: DISTANCE FIELDS & FAST MARCHING METHOD
+
+
+NAME:  ALSENY SYLLA
+
+
+COLLABORATORS AND OTHER RESOURCES:
+List the names of everyone you talked to about this assignment
+(classmates, TAs, ALAC tutors, upperclassmen, students/instructor via
+LMS, etc.), and all of the resources (books, online reference
+material, etc.) you consulted in completing this assignment.
+
+
+
+Websites:
+- www.cplusplus.com
+
+Remember: Your implementation for this assignment must be done on your
+own, as described in "Academic Integrity for Homework" handout.
+
+
+ESTIMATE OF # OF HOURS SPENT ON THIS ASSIGNMENT:  9 hours
+
+
+NAIVE ALGORITHM:
+
+Order Notation: O(h^2 * w^2)
+
+Timing Experiment Data: 
+
+$ time ./distancefield.exe tiny_5x5.ppm out.ppm naive_method grey_bands user
+time: .000 s
+
+$ time ./distancefield.exe small_10x10.ppm out.ppm naive_method grey_bands
+user time: .000 s
+
+$ time ./distancefield.exe squiggle_30x30.ppm out.ppm naive_method grey_bands
+user time: .015 s
+
+$ time ./distancefield.exe lines_100x100.ppm out.ppm naive_method grey_bands
+user time: 1.796 s
+
+$ time ./distancefield.exe data_structures_300x300.ppm out.ppm naive_method grey_bands
+user time: 5 m 25.375 s
+
+$ time ./distancefield.exe dots_1000x1000.ppm out.ppm naive_method grey_bands
+user time: 728 m 16.322 s
+
+Discussion:
+The naive algorithm searches through all of the pixels in the image, and for 
+each individual pixel, conducts yet another scan of the entire board to find the
+black pixels. This is very computationally expensive, and, while it works fine
+for images that are small, once they start getting bigger, they take really 
+long to go through and finish, as seen with the 1000x1000 image.
+
+
+IMPROVED ALGORITHM:
+
+Order Notation: O(h*w*p)
+
+Timing Experiment Data:
+
+$ time ./distancefield.exe tiny_5x5.ppm out.ppm improved_method grey_bands
+user time: .000 s
+
+$ time ./distancefield.exe small_10x10.ppm out.ppm improved_method grey_bands
+user time: .000 s
+
+$ time ./distancefield.exe squiggle_30x30.ppm out.ppm improved_method grey_bands
+user time: .013 s
+
+$ time ./distancefield.exe lines_100x100.ppm out.ppm improved_method grey_bands
+user time: .046 s
+
+$ time ./distancefield.exe data_structures_300x300.ppm out.ppm improved_method grey_bands
+user time: 8.531 s
+
+$ time ./distancefield.exe dots_1000x1000.ppm out.ppm improved_method grey_bands
+user time: 26 m 4.046 s
+
+Discussion:
+By storing all of the black pixels in a vector before calculating the distance,
+we greatly reduce the runtime of the algorithm, as for each pixel, all the 
+program has to do now is scan through the vector containing the locations for
+each black pixel instead of looking through the whole image all over again.
+The order notation now becomes O(h*w + h*w*p). However, since we are looking 
+for the big-Oh notation, we only keep the dominant term, and the (h*w) term goes away
+As observed when running with various test cases, the run time of the 1000x1000 
+image, which was 728 minutes before, has now been reduced to only taking 26 minutes, 
+and the 300x300 image, which took almost 5 and a half minutes, now only takes a mere 8.5 seconds.
+
+
+FAST MARCHING METHOD (with a map): 
+
+Order Notation: O(h*w*log(h*w))
+
+Timing Experiment Data:
+
+$ time ./distancefield.exe tiny_5x5.ppm out.ppm improved_method grey_bands
+user time: .000 s
+
+$ time ./distancefield.exe small_10x10.ppm out.ppm improved_method grey_bands
+user time: .000 s
+
+$ time ./distancefield.exe squiggle_30x30.ppm out.ppm improved_method grey_bands
+user time: .015 s
+
+$ time ./distancefield.exe lines_100x100.ppm out.ppm improved_method grey_bands
+user time: .093 s
+
+$ time ./distancefield.exe data_structures_300x300.ppm out.ppm improved_method grey_bands
+user time: 1.001 s
+
+$ time ./distancefield.exe dots_1000x1000.ppm out.ppm improved_method grey_bands
+user time: 8.593 s
+
+Discussion:
+The first thing we do in this algorithm is loop through every single pixel, in
+order to create an initial priority queue. If we reach a black pixel, we then
+check the 8 neighbors of the pixel and either push them back to the queue or
+update its position in the queue. Thus, the order notation for this is
+O(h*w*log(h*w)), since for push and update_position, we call percolate_up
+or percolate_down, both of which are O(log n) in the worst case, and since the
+maximum amount of pixels possible that can be stored in the queue is the amount
+of pixels in the image minus a constant, it is just log(h*w). Then, we propagate
+the pixels, which is only a log(h*w) operation, and in big-Oh notation, we keep
+the dominant term, which is simply h*w*log(h*w).
+
+

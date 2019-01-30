@@ -1,0 +1,79 @@
+HOMEWORK 6: CARCASSONNE RECURSION/CONTEXT
+
+
+NAME:  ALSENY SYLLA
+
+UMs:
+- Kiana
+- Warren
+
+
+
+ESTIMATE OF # OF HOURS SPENT ON THIS ASSIGNMENT:  35 hours
+
+
+ANALYSIS OF PERFORMANCE OF YOUR ALGORITHM:
+(order notation & concise paragraph, < 200 words)
+The dimensions of the board (h and w)? 
+The number of tiles (t)? 
+The number of road (r) and city (c) edges? 
+The number of duplicate tiles?
+Whether rotations are allowed?  
+Etc. 
+
+
+For the main recursive function, the most important variables that control its 
+complexity are the board dimensions, in the main code of my function, which is 
+a nested loop, therefore O(hw), and the number of tiles that have already been 
+placed on the board in the actual recursive function. Then, it goes through the
+four places that border a potential location for a new tile. Therefore, O(t) in 
+the recursive function. Among the helper functions, my base case road check 
+function goes through all the tiles placed on the board, and therefore is O(t). 
+The helper function to check edges has four checks, thus it would be O(r+c). 
+As for the check to make sure the tile is not already in the solution, that 
+is also a simple loop through the tiles that are already on the board, which
+has a worst case running time, again, of O(t). For observed running times, 
+as the number of tiles and the board increases, there is a slight visible time
+increase, especially with the latter puzzle tests.
+
+CONTEXT
+
+DESCRIBE INTERESTING NEW PUZZLES YOU CREATED:
+tile road road road road
+tile road road pasture pasture
+tile pasture road road road
+tile road pasture pasture road
+tile road pasture pasture pasture
+tile pasture road road pasture
+tile pasture pasture road road
+
+- The abbey is at the bottom, and I used it to make sure the road check was working
+  optimally
+
+
+SUMMARY OF YOUR PERFORMANCE ON ALL PUZZLES:
+Correctness & approximate wall clock running time for various command
+line arguments.
+
+
+COMPILE:
+	clang++ *.cpp 
+
+
+Command line argument                                                 | Running Time
+-----------------------------------------------------------------------------------------
+$ ./carcassonne.exe puzzle1.txt -board_dimensions 2 2 		          | < 1 second
+$ ./carcassonne.exe puzzle2.txt -board_dimensions 3 3 		  		  | < 1 second
+$ ./carcassonne.exe puzzle3.txt -board_dimensions 2 2 		          | < 1 second
+$ ./carcassonne.exe puzzle4.txt -board_dimensions 4 4 		          | < 1 second
+$ ./carcassonne.exe puzzle4.txt -board_dimensions 4 4 -all_solutions  | < 1 second
+$ ./carcassonne.exe puzzle5.txt -board_dimensions 4 3 		          | < 1 second
+$ ./carcassonne.exe puzzle6.txt -board_dimensions 6 6 		          | < 1 second
+$ ./carcassonne.exe puzzle6.txt -board_dimensions 6 6 -all_solutions  | < 1 second
+$ ./carcassonne.exe puzzle7.txt										  | < 1 second
+$ ./carcassonne.exe puzzle8.txt										  | < 1 second
+$ ./carcassonne.exe puzzle9.txt										  | about 2 seconds
+
+- All of the above are correct
+- Since rotations were not implemented, any command line argument including -allow_rotations
+  will be incorrect

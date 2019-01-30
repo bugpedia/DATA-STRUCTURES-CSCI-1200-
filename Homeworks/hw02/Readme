@@ -1,0 +1,73 @@
+HOMEWORK 2: TENNIS CLASSES
+	Parsing and computing statistics from the results of Grand Slam tennis championships
+	(the Australian Open, the French Open, Wimbledon, and the U.S. Open). 
+
+	See file hw_description for the homework details. 
+		or Use this link: 
+		https://www.cs.rpi.edu/academics/courses/spring15/csci1200/hw/02_tennis_classes/hw.pdf
+
+
+NAME:  Alseny Sylla
+
+
+File I/O and Command Line Arguments
+
+	To compile:
+		clang++ -Wall main.cpp player.cpp
+	To run: 
+		eg: ./tennis_statistics.out sample_scores.txt sample_scores_out.txt
+
+
+Your program will run with two command-line arguments, one being the input file containing the match
+information and the other being the output file where you will write the computed statistics. For example,
+here is a valid command line to your program:
+./tennis_statistics.out sample_scores.txt sample_scores_out.txt
+The input data comes from http://stevegtennis.com/. 
+
+Resources:
+- www.stackoverflow.com
+- www.bytes.com
+
+Remember: Your implementation for this assignment must be done on your
+own, as described in "Academic Integrity for Homework" handout.
+
+
+ESTIMATE OF # OF HOURS SPENT ON THIS ASSIGNMENT:  14 hours
+
+
+DESCRIPTION OF 3RD STATISTIC:
+The third statistic takes a look at matches where the winner not only took 
+5 sets to win, but did so while coming back from being down 2 sets going into
+the 3rd. It assigns a "comeback win" when a player has done so, and outputs
+the players who have at least 1 comeback win.
+
+
+RESULTS FROM 3RD STATISTIC:
+Using command line prompt ./hw2.exe mens_2014_5_setters.txt out.txt, the 3rd
+statistic output is as follows:
+
+COMEBACK STATISTICS
+Player                    W
+Kevin Anderson            2
+Marin Cilic               1
+Damir Dzumhur             1
+Roger Federer             1
+Fabio Fognini             1
+Marcel Granollers         1
+Andreas Haider-Maurer     1
+Jerzy Janowicz            1
+Steve Johnson             1
+Blaz Kavcic               1
+Martin Klizan             1
+Nick Kyrgios              1
+Benoit Paire              1
+Tommy Robredo             1
+Radek Stepanek            1
+Jan-Lennard Struff        1
+Dominic Thiem             1
+Fernando Verdasco         1
+Mikhail Youzhny           1
+
+
+MISC. COMMENTS TO GRADER:  
+Optional, please be concise!
