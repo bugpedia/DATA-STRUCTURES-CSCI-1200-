@@ -1,0 +1,42 @@
+HOMEWORK 5: LINKED TRAIN CARS
+	In this assignment we examine and manipulate a doubly-linked list structure 
+	of different types of train cars:
+		engines, freight cars, passenger cars, dining cars, and sleeping cars.
+	Each engine weighs 150 tons and has power = 3,000 horsepower, freight cars
+	hold different weights (depending on the contents of the car), and all other 
+	cars weigh 50 tons. Note that a train can have multiple engines that work 
+	together to drive the train, and these engines can be positioned 
+	at the front, the back, or even in the middle of the train! 
+	Your task for this assignment is to perform a variety of basic train yard operations
+	to connect, disconnect, and reconnect cars into trains in preparation for service.
+
+NAME:  ALSENY SYLLA
+
+NOTE: CHECK THE hw_description file for instruction
+
+
+
+ESTIMATE OF # OF HOURS SPENT ON THIS ASSIGNMENT:  13 hours
+
+
+
+DESCRIPTION OF IMPROVED SHIPFREIGHT ALGORITHM FOR EXTRA CREDIT 
+Aiming for optimal (fastest train speed, most freight, fewest number
+of engines used, and fewest resulting trains) for any input.  Note:
+Student choice on how to prioritze between these goals.  Describe your
+priorization and your implementation.
+
+
+
+DESCRIPTION OF IMPROVED SEPARATE ALGORITHM FOR EXTRA CREDIT 
+Aiming for optimally comfortable trains (smaller values for average
+distance to dining and/or larger values for closest engine to sleeper)
+and/or handling cases with > 2 engines.  Student choice on how to
+prioritze between these goals.  Describe your priorization and your
+implementation.
+
+
+MISC. COMMENTS TO GRADER:  
+Optional, please be concise!
+
+
